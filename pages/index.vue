@@ -15,36 +15,32 @@
       </div>
       <div class="image">
         <div class="image__container" v-for="item in items['posts']" :key="item.id">
-          <img class="image__item" v-bind:src="item.url" v-on:click="show(item.url)" data-lightbox="demo"/>
+          <img class="image__item" v-bind:src="item.url" v-on:click="show(index)"/>
         </div>
-<!--        <LightBox ref="lightbox" :images="this.url"></LightBox>-->
-<!--        <div data-lightbox="demo" v-bind:src="this.url" />-->
-<!--        <modal class="modal" name="modal-content" :resizable="true" :draggable="true" maxHeight="400px">-->
-<!--          <img class="modal__img" v-bind:src="this.url" />-->
-<!--        </modal>-->
       </div>
     </div>
   </div>
 </template>
 <script>
-// import LightBox from "vue-image-lightbox";
-// require("vue-image-lightbox/dist/vue-image-lightbox.min.css");
 export default {
+  data() {
+    return {
+    }
+  },
   components: {
-    // LightBox,
   },
   asyncData() {
     const items = require('~/assets/data.json')
     return {
       items,
-      url: '',
+      url: ''
     }
   },
   methods: {
-    // show(url) {
-    //   this.url=url;
-    //   this.$refs.lightbox.showImage();
-    // }
+    show(index) {
+      this.url=url;
+      this.$refs.lightbox.showImage(index);
+    },
   }
 }
 </script>
