@@ -1,62 +1,133 @@
 <template>
   <div>
-    <Nuxt />
+    <div class="header">
+      <h1>{{ isActive }}</h1>
+      <div class="button">
+        <div class="button__false" v-on:click="isActive = !isActive" v-bind:class="{button__true:isActive}">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <div class="container-box">
+      <Nuxt />
+    </div>
   </div>
 </template>
-
-<style>
-html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+<script>
+export default {
+  data() {
+    return {
+      isActive: false
+    }
+  },
+  methods: {
+  }
 }
+</script>
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+<style lang="scss" scoped>
+body {
   margin: 0;
+  padding: 0;
 }
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.header {
+  z-index: 10;
+  width: 100%;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  display: flex;
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.container-box {
+  z-index: 8;
+  margin: 0 auto;
 }
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+@media screen and (max-width: 480px){
+  .header {
+    height: 70px;
+  }
+  .container-box {
+    padding-top: 70px;
+    width: 100%; 
+  }
 }
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+@media screen and (max-width: 896px) and (min-width: 481px){ 
+  .header {
+    height: 70px;
+  }
+  .container-box {
+    padding-top: 70px;
+    width: 100%; 
+  }
+}
+@media screen and (min-width: 897px){ 
+  .header {
+    height: 70px;
+  }
+  .container-box {
+    padding-top: 70px;
+    width: 95%;
+  }
+}
+.button {
+  margin: 10px 30px 0 auto;
+  &__false {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    cursor:pointer;
+    background-color:#eeeeee;
+    width:60px;
+    height:60px;
+    border-radius:10px;
+    box-shadow: -7px -7px 20px 0px #fff9,
+                -4px -4px 5px 0px #fff9,
+                7px 7px 20px 0px #0002,
+                4px 4px 5px 0px #0001,
+                inset 0px 0px 0px 0px #fff9,
+                inset 0px 0px 0px 0px #0001,
+                inset 0px 0px 0px 0px #fff9,
+                inset 0px 0px 0px 0px #0001;
+    transition:box-shadow 0.6s cubic-bezier(.79,.21,.06,.81);
+    span{
+      background-color:lightcoral;
+      box-shadow: 0px 0px 10px 0px rgba(240,128,128,0.3);
+      width:35px;
+      height:4px;
+      border-radius:4px;
+      margin:3px 0px 3px 0px;
+      transition:margin 0.4s cubic-bezier(.79,.21,.06,.81),transform 0.4s cubic-bezier(.79,.21,.06,.81);
+    }
+    span:nth-child(2){
+      transform-origin:50% 50%;
+    }
+  }
+  &__true {
+    box-shadow: 0px 0px 0px 0px #fff9,
+              0px 0px 0px 0px #fff9,
+              0px 0px 0px 0px #0001,
+              0px 0px 0px 0px #0001,
+              inset -7px -7px 20px 0px #fff9,
+              inset -4px -4px 5px 0px #fff9,
+              inset 7px 7px 20px 0px #0003,
+              inset 4px 4px 5px 0px #0001;
+    span{
+      margin:-2px;
+    }
+    span:nth-child(1){
+      transform:rotate(-45deg);  
+    }
+    span:nth-child(2){
+      transform:scale(0)
+    }
+    span:nth-child(3){
+      transform:rotate(45deg)
+    }
+  }
 }
 </style>
