@@ -3,26 +3,48 @@
     <div class="container">
       <div class="profile">
         <div class="profile__box">
+          <div class="profile__text">
+            <div class="profile__text__name">yagu</div>
+            <div class="profile__text__id">@yagu_ohuton</div>
+            <div class="profile__text__detail">d!国民(納税)<br />@ch垢(@yagu_chtw)<br />イラストは勉強中</div>
+          </div>
           <div class="profile__icon">
-            <img class="profile__icon__item" src="http://pbs.twimg.com/profile_images/1320606686290141185/Glv-1X4W_normal.jpg" />
+            <img class="profile__icon__item" src="http://pbs.twimg.com/profile_images/1320606686290141185/Glv-1X4W.jpg" />
           </div>
         </div>
       </div>
-      <div class="img">
-        <div class="img__container" v-for="item in items['posts']" :key="item.id">
-          <img class="img__item" v-bind:src="item.url" />
+      <div class="image">
+        <div class="image__container" v-for="item in items['posts']" :key="item.id">
+          <img class="image__item" v-bind:src="item.url" v-on:click="show(item.url)" data-lightbox="demo"/>
         </div>
+<!--        <LightBox ref="lightbox" :images="this.url"></LightBox>-->
+<!--        <div data-lightbox="demo" v-bind:src="this.url" />-->
+<!--        <modal class="modal" name="modal-content" :resizable="true" :draggable="true" maxHeight="400px">-->
+<!--          <img class="modal__img" v-bind:src="this.url" />-->
+<!--        </modal>-->
       </div>
     </div>
   </div>
 </template>
 <script>
+// import LightBox from "vue-image-lightbox";
+// require("vue-image-lightbox/dist/vue-image-lightbox.min.css");
 export default {
+  components: {
+    // LightBox,
+  },
   asyncData() {
     const items = require('~/assets/data.json')
     return {
-      items
+      items,
+      url: '',
     }
+  },
+  methods: {
+    // show(url) {
+    //   this.url=url;
+    //   this.$refs.lightbox.showImage();
+    // }
   }
 }
 </script>
@@ -33,8 +55,24 @@ export default {
 .profile {
   position: -webkit-sticky;
   position:sticky;
-  height: 140px;
+  height: 300px;
   top: 80px;
+  &__text {
+    padding: 60px 0 0 30px;
+    font-family: 'Roboto', sans-serif;
+    &__name {
+      font-size: 30px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,.3), -2px -2px 4px rgba(255,255,255,1);
+    }
+    &__id {
+      font-size: 16px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,.3), -2px -2px 4px rgba(255,255,255,1);
+    }
+    &__detail {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+  }
   &__icon {
     position: absolute;
     top: -40px;
@@ -43,7 +81,7 @@ export default {
     height: 100px;
     border-radius: 50%;
     background: #f7f7f7;
-    box-shadow: inset 5px 5px 10px #d9d9d9, 
+    box-shadow: inset 5px 5px 10px #d9d9d9,
                 inset -5px -5px 10px #ffffff;
     &__item {
       margin: 9px auto;
@@ -55,29 +93,30 @@ export default {
     }
   }
   &__box {
+    top: 50px;
     position: relative;
-    margin-top: 50px;
     width: 200px;
-    height: 365px;
+    height: 263px;
     border-radius: 10px;
     background: #f7f7f7;
-    box-shadow:  6px 6px 12px #dedede, 
+    box-shadow:  6px 6px 12px #dedede,
                 -6px -6px 12px #ffffff;
   }
 }
-.img {
+.image {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
+  margin-left: 10px;
   &__container {
     position: relative;
     margin: 5px;
     border-radius: 10px;
     background: #f7f7f7;
-    box-shadow:  6px 6px 12px #dedede, 
+    box-shadow:  6px 6px 12px #dedede,
                 -6px -6px 12px #ffffff;
   }
   &__item {
@@ -94,44 +133,49 @@ export default {
     object-fit: cover;
   }
 }
-@media screen and (max-width: 480px){
-  .profile {
-    width: 0px;
+.modal {
+  background-color: gray;
+  &__img {
   }
-  .img {
+}
+@media screen and (max-width: 800px){
+  .profile {
+    display: none;
+  }
+  .image {
     &__container {
       width: 45%;
       height: 100px;
     }
   }
 }
-@media screen and (max-width: 896px) and (min-width: 481px){ 
+@media screen and (max-width: 896px) and (min-width: 801px){
   .profile {
     width: 200px;
   }
-  .img {
+  .image {
     &__container {
       width: 45%;
       height: 100px;
     }
   }
 }
-@media screen and (max-width: 1024px) and (min-width: 897px){ 
+@media screen and (max-width: 1024px) and (min-width: 897px){
   .profile {
     width: 250px;
   }
-  .img {
+  .image {
     &__container {
       width: 48%;
       height: 200px;
     }
   }
 }
-@media screen and (min-width: 1025px) { 
+@media screen and (min-width: 1025px) {
   .profile {
     width: 250px;
   }
-  .img {
+  .image {
     &__container {
       width: 31%;
       height: 200px;
