@@ -13,9 +13,14 @@
           </div>
         </div>
       </div>
+      <no-ssr>
+        <image-lightbox ref="lightbox" :media="images" :show-light-box="false" :show-thumbs="false" :showFooterCount="false"></image-lightbox>
+      </no-ssr>
       <div class="image">
         <div class="image__container" v-for="item in items['posts']" :key="item.id">
-          <img class="image__item" v-bind:src="item.url" v-on:click="show(index)"/>
+          <div>
+            <img class="image__item" v-bind:src="item.url" v-on:click="show(item.url)"/>
+          </div>
         </div>
       </div>
     </div>
@@ -25,6 +30,10 @@
 export default {
   data() {
     return {
+      images: [
+        { srcset: ''},
+      ],
+      url: ''
     }
   },
   components: {
@@ -32,15 +41,14 @@ export default {
   asyncData() {
     const items = require('~/assets/data.json')
     return {
-      items,
-      url: ''
+      items
     }
   },
   methods: {
-    show(index) {
-      this.url=url;
-      this.$refs.lightbox.showImage(index);
-    },
+    show(url) {
+      this.images[0]['srcset']=url;
+      this.$refs.lightbox.showImage(0);
+    }
   }
 }
 </script>
@@ -78,7 +86,7 @@ export default {
     border-radius: 50%;
     background: #f7f7f7;
     box-shadow: inset 5px 5px 10px #d9d9d9,
-                inset -5px -5px 10px #ffffff;
+    inset -5px -5px 10px #ffffff;
     &__item {
       margin: 9px auto;
       display: block;
@@ -96,7 +104,7 @@ export default {
     border-radius: 10px;
     background: #f7f7f7;
     box-shadow:  6px 6px 12px #dedede,
-                -6px -6px 12px #ffffff;
+    -6px -6px 12px #ffffff;
   }
 }
 .image {
@@ -106,14 +114,14 @@ export default {
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
-  margin-left: 10px;
+  margin-left: 20px;
   &__container {
     position: relative;
     margin: 5px;
     border-radius: 10px;
     background: #f7f7f7;
     box-shadow:  6px 6px 12px #dedede,
-                -6px -6px 12px #ffffff;
+    -6px -6px 12px #ffffff;
   }
   &__item {
     position: absolute;
