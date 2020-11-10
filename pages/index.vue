@@ -52,8 +52,15 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+html,body {
+  margin: 0;
+}
+html {
+  background-color: #f2f3f7;
+}
 .container {
+  margin-left: 3%;
   display: flex;
 }
 .profile {
@@ -102,7 +109,6 @@ export default {
     width: 200px;
     height: 263px;
     border-radius: 10px;
-    background: #f7f7f7;
     box-shadow:  6px 6px 12px #dedede,
     -6px -6px 12px #ffffff;
   }
@@ -114,14 +120,11 @@ export default {
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
-  margin-left: 20px;
   &__container {
     position: relative;
     margin: 5px;
     border-radius: 10px;
-    background: #f7f7f7;
-    box-shadow:  6px 6px 12px #dedede,
-    -6px -6px 12px #ffffff;
+    box-shadow: 1px 2px 3px 0px #dedede, -6px -6px 12px #ffffff;
   }
   &__item {
     position: absolute;
@@ -147,6 +150,7 @@ export default {
     display: none;
   }
   .image {
+    margin-left: 4%;
     &__container {
       width: 45%;
       height: 100px;
@@ -158,6 +162,7 @@ export default {
     width: 200px;
   }
   .image {
+    margin-left: 20px;
     &__container {
       width: 45%;
       height: 100px;
@@ -169,6 +174,7 @@ export default {
     width: 250px;
   }
   .image {
+    margin-left: 20px;
     &__container {
       width: 48%;
       height: 200px;
@@ -180,6 +186,7 @@ export default {
     width: 250px;
   }
   .image {
+    margin-left: 30px;
     &__container {
       width: 31%;
       height: 200px;

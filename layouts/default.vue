@@ -41,19 +41,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+html,body {
+  margin: 0;
+}
+html {
+  background-color: #f2f3f7;
+}
 .header {
   z-index: 10;
   width: 100%;
-  position: fixed;
-  margin: 0;
   top: 0;
-  left: 0;
-  right: 0;
+  position: fixed;
   display: flex;
-  background-color: #efeeee;
+  background-color: #f2f3f7;
+  box-shadow: -6px -10px 20px 0;
 }
 .title {
-  margin: auto 0 auto 3%;
+  margin: auto 0;
   font-family: 'Roboto', sans-serif;
   font-size: 1.5rem;
   color: dimgray;
@@ -65,6 +69,9 @@ export default {
   margin: 0 auto;
 }
 @media screen and (max-width: 800px){
+  .title {
+    margin-left: 8%;
+  }
   .header {
     height: 70px;
   }
@@ -74,6 +81,9 @@ export default {
   }
 }
 @media screen and (max-width: 896px) and (min-width: 801px){
+  .title {
+    margin-left: 5%;
+  }
   .header {
     height: 70px;
   }
@@ -88,6 +98,9 @@ export default {
   }
 }
 @media screen and (min-width: 897px){
+  .title {
+    margin-left: 5%;
+  }
   .header {
     height: 70px;
   }
@@ -104,7 +117,7 @@ export default {
 .sp {
   &__profile {
     z-index: 9;
-    background: white;
+    background-color: #f2f3f7;
     transition: .5s;
     &__text {
       padding-top: 60px;
@@ -130,7 +143,6 @@ export default {
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background: #f7f7f7;
       box-shadow: inset 5px 5px 10px #d9d9d9,
                   inset -5px -5px 10px #ffffff;
       &__item {
@@ -149,10 +161,9 @@ export default {
       animation: 0.8s fadeIn forwards;
       -webkit-animation: 0.8s fadeIn forwards;
       position: relative;
-      width: 80%;
+      width: 85%;
       height: 250px;
       border-radius: 10px;
-      background: #f7f7f7;
       box-shadow:  6px 6px 12px #dedede,
                   -6px -6px 12px #ffffff;
     }
@@ -172,7 +183,7 @@ export default {
     top: 69px;
   }
   &__button {
-    margin: 7px 30px 0 auto;
+    margin: 7px 7% 0 auto;
     &__false {
       -webkit-tap-highlight-color: rgba(0,0,0,0);
       -webkit-tap-highlight-color: transparent;
