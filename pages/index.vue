@@ -9,7 +9,7 @@
             <div class="profile__text__detail">d!国民(納税)<br />@ch垢(@yagu_chtw)<br />イラストは勉強中</div>
           </div>
           <div class="profile__icon">
-            <img class="profile__icon__item" src="http://pbs.twimg.com/profile_images/1327235140553035777/nz4oX2bi.jpg" />
+            <img class="profile__icon__item" src="http://pbs.twimg.com/profile_images/1327955604095127558/pLqLKXip.jpg" />
           </div>
         </div>
       </div>
