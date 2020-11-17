@@ -15,7 +15,7 @@
       <div v-if="isActive" class="sp__profile__box">
         <div class="sp__profile__text">
           <div class="sp__profile__text__name">yagu</div>
-          <div class="sp__profile__text__id">@yagu_ohuton</div>
+          <div class="sp__profile__text__id">@yagu_21</div>
           <div class="sp__profile__text__detail">d!国民(納税)<br />@ch垢(@yagu_chtw)<br />イラストは勉強中</div>
         </div>
         <div class="sp__profile__icon">
