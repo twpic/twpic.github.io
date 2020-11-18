@@ -2,14 +2,14 @@
   <div>
     <div class="container">
       <div class="profile">
-        <div class="profile__box">
+        <div class="profile__box" v-for="profile_item in items['profile']" :key="profile_item.profile_name">
           <div class="profile__text">
-            <div class="profile__text__name">yagu</div>
-            <div class="profile__text__id">@yagu_21</div>
+            <div class="profile__text__name">{{ profile_item['profile_name'] }}</div>
+            <div class="profile__text__id">@{{ profile_item['profile_name_id'] }}</div>
             <div class="profile__text__detail">d!国民(納税)<br />@ch垢(@yagu_chtw)<br />イラストは勉強中</div>
           </div>
           <div class="profile__icon">
-            <img class="profile__icon__item" src="http://pbs.twimg.com/profile_images/1327955604095127558/pLqLKXip.jpg" />
+            <img class="profile__icon__item" v-bind:src="profile_item['profile_img']" />
           </div>
         </div>
       </div>
@@ -17,7 +17,7 @@
         <image-lightbox ref="lightbox" :media="images" :show-light-box="false" :show-thumbs="false" :showFooterCount="false"></image-lightbox>
       </no-ssr>
       <div class="image">
-        <div class="image__container" v-for="item in items['posts']" :key="item.id">
+        <div class="image__container" v-for="item in items['posts']" :key="item.created_at">
           <div>
             <img class="image__item" v-bind:src="item.url" v-on:click="show(item.url)"/>
           </div>

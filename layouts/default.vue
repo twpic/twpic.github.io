@@ -12,14 +12,14 @@
       </div>
     </div>
     <div class="sp__profile" v-bind:class="{sp__profile_true:isActive}">
-      <div v-if="isActive" class="sp__profile__box">
+      <div v-if="isActive" class="sp__profile__box" v-for="profile_item in items['profile']" :key="profile_item.profile_name">
         <div class="sp__profile__text">
-          <div class="sp__profile__text__name">yagu</div>
-          <div class="sp__profile__text__id">@yagu_21</div>
+          <div class="sp__profile__text__name">{{ profile_item['profile_name'] }}</div>
+          <div class="sp__profile__text__id">@{{ profile_item['profile_name_id'] }}</div>
           <div class="sp__profile__text__detail">d!国民(納税)<br />@ch垢(@yagu_chtw)<br />イラストは勉強中</div>
         </div>
         <div class="sp__profile__icon">
-          <img class="sp__profile__icon__item" src="http://pbs.twimg.com/profile_images/1327955604095127558/pLqLKXip.jpg" />
+          <img class="sp__profile__icon__item" v-bind:src="profile_item['profile_img']" />
         </div>
       </div>
     </div>
@@ -31,8 +31,10 @@
 <script>
 export default {
   data() {
+    const items = require('~/assets/data.json')
     return {
-      isActive: false
+      isActive: false,
+      items
     }
   },
   methods: {
