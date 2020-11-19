@@ -19,7 +19,7 @@
       <div class="image">
         <div class="image__container" v-for="item in items['posts']" :key="item.created_at">
           <div>
-            <img class="image__item" v-bind:src="item.url" v-on:click="show(item.url)"/>
+            <img class="image__item" v-bind:src="item.url" v-on:click="show(item.url, item.text)"/>
           </div>
         </div>
       </div>
@@ -31,7 +31,10 @@ export default {
   data() {
     return {
       images: [
-        { srcset: ''},
+        {
+          srcset: '',
+          caption: ''
+        },
       ],
       url: ''
     }
@@ -45,8 +48,9 @@ export default {
     }
   },
   methods: {
-    show(url) {
+    show(url, text) {
       this.images[0]['srcset']=url;
+      this.images[0]['caption']=text;
       this.$refs.lightbox.showImage(0);
     }
   }
