@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="header">
-      <div class="title">yaguのお絵かき部屋</div>
+      <div class="title">お絵かき部屋</div>
       <div class="sp__button">
         <div class="sp__button__false" v-on:click="isActive = !isActive" v-bind:class="{sp__button__true:isActive}">
           <img v-if="isActive===false" src="~/assets/icon_profile.png"/>
